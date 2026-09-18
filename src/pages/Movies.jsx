@@ -6,6 +6,7 @@ import EmptyState from "../components/common/EmptyState";
 import SearchBox from "../components/movies/SearchBox";
 
 import MovieGrid from "../components/movies/MovieGrid";
+import MovieModal from "../components/movies/MovieModal";
 
 import {
   fetchShows,
@@ -21,6 +22,7 @@ function Movies() {
 
   const [error, setError] =useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
+  
 
 
 
@@ -190,7 +192,16 @@ function Movies() {
       </main>
 
     
-
+             {/* Movie Modal */} 
+             {selectedMovie && 
+             ( 
+             <MovieModal 
+                show={selectedMovie} 
+                onClose={() => { setSelectedMovie(null); }} 
+                
+                />
+             
+             )}
    
 
     </div>
