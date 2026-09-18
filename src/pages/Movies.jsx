@@ -4,7 +4,7 @@ import MovieGrid from "../components/movies/MovieGrid";
 
 import {
   fetchShows,
-  
+  findShows,
 } from "../services/movieApi";
 
 function Movies() {
