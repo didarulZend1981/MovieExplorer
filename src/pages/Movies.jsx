@@ -1,5 +1,10 @@
 
 import { useEffect, useState } from "react";
+import Loading from "../components/common/Loading";
+import EmptyState from "../components/common/EmptyState";
+
+import SearchBox from "../components/movies/SearchBox";
+
 import MovieGrid from "../components/movies/MovieGrid";
 
 import {
@@ -8,21 +13,105 @@ import {
 } from "../services/movieApi";
 
 function Movies() {
-  const [shows, setShows] = useState([]);
+   const [shows, setShows] = useState([]);
+
+  const [search, setSearch] = useState("");
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] =useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+
 
   useEffect(() => {
 
     async function loadShows() {
 
-      const data =
+      try {
+
+        setLoading(true);
+
+        const data =
           await fetchShows();
 
         setShows(data);
+
+      } catch (error) {
+
+        setError(error.message);
+
+      } finally {
+
+        setLoading(false);
+
+      }
     }
 
     loadShows();
 
   }, []);
+
+
+
+  async function handleSearch(value) {
+
+    setSearch(value);
+
+    const query =
+      value.trim();
+
+    if (!query) {
+
+      try {
+
+        setLoading(true);
+        setError("");
+
+        const data =
+          await fetchShows();
+
+        setShows(data);
+
+      } catch (error) {
+
+        setError(error.message);
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+      return;
+    }
+
+
+    try {
+
+      setLoading(true);
+      setError("");
+
+      const results =
+        await findShows(query);
+
+      const matchedShows =
+        results.map(
+          (item) => item.show
+        );
+
+      setShows(matchedShows);
+
+    } catch (error) {
+
+      setError(error.message);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  }
 
 
   return (
@@ -49,7 +138,10 @@ function Movies() {
 
 
           
-       
+          <SearchBox
+          value={search}
+          onChange={handleSearch}
+        />
 
         </header>
 
@@ -57,16 +149,39 @@ function Movies() {
         <section className="mt-10">
 
 
-          {
+              {loading && <Loading />}
+
+
+          {!loading && error && (
+            <EmptyState
+              title="Unable to load shows"
+              message={error}
+            />
+          )}
+
+
+          {!loading &&
+            !error &&
+            shows.length === 0 && (
+              <EmptyState
+                title="No results found"
+                message="Try searching with another title."
+              />
+            )}
+
+
+          {!loading &&
+            !error &&
             shows.length > 0 && (
 
               <MovieGrid
                 shows={shows}
-                onDetails={() => {}}
-                // onDetails={(shows) => setSelectedMovie(shows)}
+                // onDetails={() => {}}
+                onDetails={(shows) => setSelectedMovie(shows)}
               />
 
             )}
+
         </section>
 
 
