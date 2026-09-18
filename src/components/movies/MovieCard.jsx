@@ -37,13 +37,13 @@ function MovieCard({ show,onDetails }) {
 
       </div>
 
-      <div className="p-5">
+      <div className="p-5 text-lg sm:text-xl md:text-2xl lg:text-3xl">
 
         <h2
-          className="truncate text-lg font-bold"
+          className="ml-[10px] truncate text-lg font-bold"
           title={show.name}
         >
-          {show.name}-title
+          {show.name}
         </h2>
 
         <div className="mt-2 flex justify-between text-sm text-slate-400">
@@ -59,12 +59,12 @@ function MovieCard({ show,onDetails }) {
         </div>
 
         <button
-  type="button"
-  onClick={() => onDetails(show)}
-  className="..."
->
-  Details
-</button>
+        type="button"
+        onClick={() => onDetails(show)}
+        className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-indigo-700 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+      >
+        Details
+      </button>
 
       </div>
 

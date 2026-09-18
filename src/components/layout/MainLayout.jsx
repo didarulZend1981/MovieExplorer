@@ -7,9 +7,10 @@ import Footer from "../common/Footer";
 
 function MainLayout() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <div className="w-full min-h-screen overflow-x-hidden">
+
 
         
 
@@ -25,7 +26,7 @@ function MainLayout() {
 
       </div>
 
-    </div>
+    
   );
 }
 
