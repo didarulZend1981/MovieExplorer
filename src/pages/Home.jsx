@@ -1,5 +1,10 @@
 
 import { Link } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+import { FiTv } from "react-icons/fi";
+import { FiInfo } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import FeatureCard from "../components/home/FeatureCard";
 
 function Home() {
   return (
@@ -7,7 +12,7 @@ function Home() {
 
       <>
 
-        {/* Hero Section */}
+       
       
 {/* Hero Section */}
 <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-red-950">
@@ -40,7 +45,7 @@ function Home() {
       </p>
 
       {/* Button */}
-      <div className="mt-8 flex justify-center">
+      <div className="m-8 flex justify-center">
 
         <Link
           to="/movies"
@@ -48,9 +53,9 @@ function Home() {
         >
           Explore Movies
 
-          <span className="ml-2 text-lg">
-            →
-          </span>
+          <FiArrowRight className="ml-2 text-lg"/>
+            
+          
         </Link>
 
       </div>
@@ -66,71 +71,37 @@ function Home() {
 
 
         {/* Features Section */}
-        <section className="border-y border-slate-800 bg-slate-900/50">
+        <section className="border-y border-slate-800 bg-slate-900/50 ">
 
-          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        
 
-            <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-3 md:gap-8 lg:gap-12">
-
-              {/* Feature 1 */}
-              <div className="rounded-xl p-2">
-
-                <span className="text-3xl">
-                  🔎
-                </span>
-
-                <h2 className="mt-4 text-xl font-bold text-white">
-                  Quick Search
-                </h2>
-
-                <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base">
-                  Search available shows by title
-                  and quickly find relevant results.
-                </p>
-
-              </div>
+            <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-3 md:gap-8 lg:gap-12 h-[200px] px-2 py-[25px]">
 
 
-              {/* Feature 2 */}
-              <div className="rounded-xl p-2">
-
-                <span className="text-3xl">
-                  🎬
-                </span>
-
-                <h2 className="mt-4 text-xl font-bold text-white">
-                  Browse Shows
-                </h2>
-
-                <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base">
-                  Explore a responsive collection
-                  of available shows.
-                </p>
-
-              </div>
 
 
-              {/* Feature 3 */}
-              <div className="rounded-xl p-2">
+                <FeatureCard
+                icon={<FiSearch className="text-3xl" />}
+                title="Quick Search"
+                description="Search available shows by title and quickly find relevant results."
+                />
 
-                <span className="text-3xl">
-                  ℹ️
-                </span>
+                <FeatureCard
+                icon={<FiTv className="text-3xl" />}
+                title="Browse Shows"
+                description="Explore available shows and discover something new to watch."
+                />
 
-                <h2 className="mt-4 text-xl font-bold text-white">
-                  Detailed View
-                </h2>
+                <FeatureCard
+                icon={<FiInfo className="text-3xl" />}
+                title="View Details"
+                description="View useful information about each show before watching."
+                />
 
-                <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base">
-                  Open a detailed view with rating,
-                  genres, release date and summary.
-                </p>
-
-              </div>
 
             </div>
 
-          </div>
+          
 
         </section>
 

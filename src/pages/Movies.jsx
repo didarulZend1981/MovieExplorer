@@ -123,7 +123,7 @@ function Movies() {
 
       <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
 
-        <header className="mb-10 text-center">
+        <header className="mb-10 text-center h-[150px]">
 
           <p className="text-sm font-semibold uppercase tracking-widest text-red-500">
             Movie Library
