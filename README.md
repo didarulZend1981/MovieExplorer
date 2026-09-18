@@ -25,4 +25,4 @@ npm install
 npm run dev
 
 # Demo
-- Live link:https://movie-explorer-nsirkz8vk-mohammad-didarul-islams-projects.vercel.app/
+- Live link:https://movie-explorer-nu-eight.vercel.app/
