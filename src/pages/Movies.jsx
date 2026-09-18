@@ -1,14 +1,28 @@
 
+import { useEffect, useState } from "react";
+import MovieGrid from "../components/movies/MovieGrid";
 
-
-
-
-
-
+import {
+  fetchShows,
+  
+} from "../services/movieApi";
 
 function Movies() {
+  const [shows, setShows] = useState([]);
 
-  
+  useEffect(() => {
+
+    async function loadShows() {
+
+      const data =
+          await fetchShows();
+
+        setShows(data);
+    }
+
+    loadShows();
+
+  }, []);
 
 
   return (
@@ -40,7 +54,20 @@ function Movies() {
         </header>
 
 
-        
+        <section className="mt-10">
+
+
+          {
+            shows.length > 0 && (
+
+              <MovieGrid
+                shows={shows}
+                onDetails={() => {}}
+                // onDetails={(shows) => setSelectedMovie(shows)}
+              />
+
+            )}
+        </section>
 
 
       
